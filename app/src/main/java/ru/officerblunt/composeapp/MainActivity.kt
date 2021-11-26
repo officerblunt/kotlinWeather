@@ -12,7 +12,6 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,7 +28,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.back2),
+                bitmap = ImageBitmap.imageResource(R.drawable.back),
                 contentDescription = "background",
                 contentScale = ContentScale.FillHeight
             )
