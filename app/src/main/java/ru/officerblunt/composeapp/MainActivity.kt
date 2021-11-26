@@ -6,13 +6,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.rounded.Menu
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,28 +20,48 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.back),
-                contentDescription = "background",
-                contentScale = ContentScale.FillHeight
-            )
+
             Column(
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
+                Box(modifier = Modifier.weight(1f)) {
+                    Image(
+                        bitmap = ImageBitmap.imageResource(R.drawable.back),
+                        contentDescription = "background",
+                        contentScale = ContentScale.FillHeight
+                    )
+                }
                 Column(verticalArrangement = Arrangement.Top, modifier = Modifier.fillMaxWidth()) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        IconButton(modifier = Modifier
-                            .padding(start = 25.dp, top = 40.dp)
-                            .size(30.dp), onClick = { /*TODO*/ }) {
-                            Icon(Icons.Rounded.Menu, contentDescription = "")
+                        val scaffoldState = rememberScaffoldState()
+                        val scope = rememberCoroutineScope()
+                        Scaffold(
+                            scaffoldState = scaffoldState,
+                            modifier = Modifier.weight(3f),
+                            drawerContent = {
+                                Text("Пункт меню 1", fontSize = 28.sp)
+                                Text("Пункт меню 2", fontSize = 28.sp)
+                                Text("Пункт меню 3", fontSize = 28.sp)
+                            }
+                        ) {
+                            IconButton(modifier = Modifier
+                                .padding(start = 25.dp, top = 40.dp)
+                                .size(30.dp), onClick = {
+                                scope.launch {
+                                    scaffoldState.drawerState.open()
+                                }
+                            }) {
+                                Icon(Icons.Rounded.Menu, contentDescription = "")
+                            }
                         }
                         Text(
                             text = "10^c",
