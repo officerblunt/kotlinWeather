@@ -36,62 +36,66 @@ class MainActivity : ComponentActivity() {
                         contentDescription = "background",
                         contentScale = ContentScale.FillHeight
                     )
-                }
-                Column(verticalArrangement = Arrangement.Top, modifier = Modifier.fillMaxWidth()) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        val scaffoldState = rememberScaffoldState()
-                        val scope = rememberCoroutineScope()
-                        Scaffold(
-                            scaffoldState = scaffoldState,
-                            modifier = Modifier.weight(3f),
-                            drawerContent = {
-                                Text("Пункт меню 1", fontSize = 28.sp)
-                                Text("Пункт меню 2", fontSize = 28.sp)
-                                Text("Пункт меню 3", fontSize = 28.sp)
-                            }
-                        ) {
-                            IconButton(modifier = Modifier
-                                .padding(start = 25.dp, top = 40.dp)
-                                .size(30.dp), onClick = {
-                                scope.launch {
-                                    scaffoldState.drawerState.open()
-                                }
-                            }) {
-                                Icon(Icons.Rounded.Menu, contentDescription = "")
-                            }
-                        }
-                        Text(
-                            text = "10^c",
-                            textAlign = TextAlign.Center,
-                            fontSize = 80.sp,
-                            color = Color.White,
-                            modifier = Modifier.padding(vertical = 40.dp)
-                        )
-                        Button(
-                            modifier = Modifier
-                                .padding(end = 25.dp, top = 40.dp)
-                                .size(30.dp),
-                            onClick = { /*TODO*/ }
-                        ) {
-                            Icon(
-                                Icons.Filled.Add,
-                                contentDescription = "add",
-                                modifier = Modifier
-                                    .size(30.dp)
-                            )
-                        }
-                    }
-                    Box(
-                        contentAlignment = Alignment.Center,
+
+                    Column(
+                        verticalArrangement = Arrangement.Top,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text(
-                            text = "today's date",
-                            color = Color.White
-                        )
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            val scaffoldState = rememberScaffoldState()
+                            val scope = rememberCoroutineScope()
+                            Scaffold(
+                                scaffoldState = scaffoldState,
+                                modifier = Modifier.weight(3f),
+                                drawerContent = {
+                                    Text("Пункт меню 1", fontSize = 28.sp)
+                                    Text("Пункт меню 2", fontSize = 28.sp)
+                                    Text("Пункт меню 3", fontSize = 28.sp)
+                                }
+                            ) {
+                                IconButton(modifier = Modifier
+                                    .padding(start = 25.dp, top = 40.dp)
+                                    .size(30.dp), onClick = {
+                                    scope.launch {
+                                        scaffoldState.drawerState.open()
+                                    }
+                                }) {
+                                    Icon(Icons.Rounded.Menu, contentDescription = "")
+                                }
+                            }
+                            Text(
+                                text = "10^c",
+                                textAlign = TextAlign.Center,
+                                fontSize = 80.sp,
+                                color = Color.White,
+                                modifier = Modifier.padding(vertical = 40.dp)
+                            )
+                            Button(
+                                modifier = Modifier
+                                    .padding(end = 25.dp, top = 40.dp)
+                                    .size(30.dp),
+                                onClick = { /*TODO*/ }
+                            ) {
+                                Icon(
+                                    Icons.Filled.Add,
+                                    contentDescription = "add",
+                                    modifier = Modifier
+                                        .size(30.dp)
+                                )
+                            }
+                        }
+                        Box(
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Text(
+                                text = "today's date",
+                                color = Color.White
+                            )
+                        }
                     }
                 }
             }
