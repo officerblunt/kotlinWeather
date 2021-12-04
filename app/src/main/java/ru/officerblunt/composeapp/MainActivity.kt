@@ -26,17 +26,16 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            Scaffold() {
 
-            Column(
-                verticalArrangement = Arrangement.SpaceBetween
-            ) {
-                Box(modifier = Modifier.weight(1f)) {
+                Column(
+                    verticalArrangement = Arrangement.SpaceBetween
+                ) {
                     Image(
                         bitmap = ImageBitmap.imageResource(R.drawable.back),
                         contentDescription = "background",
-                        contentScale = ContentScale.FillHeight
+                        contentScale = ContentScale.FillHeight,
                     )
-
                     Column(
                         verticalArrangement = Arrangement.Top,
                         modifier = Modifier.fillMaxWidth()
@@ -49,7 +48,6 @@ class MainActivity : ComponentActivity() {
                             val scope = rememberCoroutineScope()
                             Scaffold(
                                 scaffoldState = scaffoldState,
-                                modifier = Modifier.weight(3f),
                                 drawerContent = {
                                     Text("Пункт меню 1", fontSize = 28.sp)
                                     Text("Пункт меню 2", fontSize = 28.sp)
