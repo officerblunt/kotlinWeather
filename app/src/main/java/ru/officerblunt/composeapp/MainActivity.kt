@@ -26,7 +26,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Scaffold() {
+            val scaffoldState = rememberScaffoldState()
+            val scope = rememberCoroutineScope()
+            Scaffold(scaffoldState = scaffoldState,
+                drawerContent={
+                    Text("Пункт меню 1", fontSize = 28.sp)
+                    Text("Пункт меню 2", fontSize = 28.sp)
+                    Text("Пункт меню 3", fontSize = 28.sp)
+                }) {
 
                 Column(
                     verticalArrangement = Arrangement.SpaceBetween
@@ -44,25 +51,14 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
-                            val scaffoldState = rememberScaffoldState()
-                            val scope = rememberCoroutineScope()
-                            Scaffold(
-                                scaffoldState = scaffoldState,
-                                drawerContent = {
-                                    Text("Пункт меню 1", fontSize = 28.sp)
-                                    Text("Пункт меню 2", fontSize = 28.sp)
-                                    Text("Пункт меню 3", fontSize = 28.sp)
+                            IconButton(modifier = Modifier
+                                .padding(start = 25.dp, top = 40.dp)
+                                .size(30.dp), onClick = {
+                                scope.launch {
+                                    scaffoldState.drawerState.open()
                                 }
-                            ) {
-                                IconButton(modifier = Modifier
-                                    .padding(start = 25.dp, top = 40.dp)
-                                    .size(30.dp), onClick = {
-                                    scope.launch {
-                                        scaffoldState.drawerState.open()
-                                    }
-                                }) {
-                                    Icon(Icons.Rounded.Menu, contentDescription = "")
-                                }
+                            }) {
+                                Icon(Icons.Rounded.Menu, contentDescription = "")
                             }
                             Text(
                                 text = "10^c",
