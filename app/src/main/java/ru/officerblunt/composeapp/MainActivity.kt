@@ -11,6 +11,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,40 +30,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val scaffoldState = rememberScaffoldState()
-            val scope = rememberCoroutineScope()
-            val items = listOf(Row() {
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(Icons.Rounded.Settings, contentDescription = "")
-                }
-                Text("test1")
-            }, Row() {
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(Icons.Rounded.Settings, contentDescription = "")
-                }
-                Text("test1")
-            }, Row() {
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(Icons.Rounded.Settings, contentDescription = "")
-                }
-                Text("test1")
-            })
-            Box() {
-                Image(
-                    bitmap = ImageBitmap.imageResource(R.drawable.back),
-                    contentDescription = "background",
-                    contentScale = ContentScale.FillHeight,
-                )
-                Scaffold(
-                    scaffoldState = scaffoldState,
-                    drawerBackgroundColor = Color(0xFFE1F5FE),
-                    drawerContentColor = Color(0xFF0277BD),
-                    drawerScrimColor = Color(0x99E0F7FA),
-                    /*drawerContent = {
-                        items.forEach { item -> Text(item, fontSize = 28.sp) }
-
-                    }*/
-                ) {
+            @Composable
+            fun Body() {
+                Box {
                     Column(
                         verticalArrangement = Arrangement.SpaceBetween
                     ) {
@@ -75,7 +47,7 @@ class MainActivity : ComponentActivity() {
                                 IconButton(modifier = Modifier
                                     .padding(start = 25.dp, top = 40.dp)
                                     .size(30.dp),
-                                    onClick = { scope.launch { scaffoldState.drawerState.open() } }) {
+                                    onClick = { /*TODO*/ }) {
                                     Icon(Icons.Rounded.Menu, contentDescription = "")
                                 }
                                 Text(
@@ -112,6 +84,7 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
+
         }
     }
 }
