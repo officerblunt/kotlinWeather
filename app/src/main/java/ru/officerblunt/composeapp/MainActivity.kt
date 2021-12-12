@@ -107,6 +107,8 @@ fun TopBar(onMenuClicked: () -> Unit) {
 
 @Composable
 fun Drawer() {
+    val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
+    val coroutineScope = rememberCoroutineScope()
     Column(
         Modifier
             .background(Color.White)
@@ -120,7 +122,19 @@ fun Drawer() {
         Row(modifier = Modifier
             .fillMaxWidth()
             .padding(top = 40.dp, start = 22.dp)
-            .clickable { /*TODO*/ }) {
+            .clickable {
+                coroutineScope.launch {
+                    when (scaffoldState.snackbarHostState.showSnackbar(
+                        message = "Snack Bar",
+                        actionLabel = "Dismiss"
+                    )) {
+                        SnackbarResult.Dismissed -> {
+                        }
+                        SnackbarResult.ActionPerformed -> {
+                        }
+                    }
+                }
+            }) {
             Icon(
                 Icons.Rounded.Settings,
                 contentDescription = "settings",
