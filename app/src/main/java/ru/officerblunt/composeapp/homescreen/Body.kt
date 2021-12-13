@@ -12,37 +12,33 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun Body() {
-    Box {
+    Column(
+        verticalArrangement = Arrangement.SpaceBetween
+    ) {
         Column(
-            verticalArrangement = Arrangement.SpaceBetween
+            verticalArrangement = Arrangement.Top,
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Column(
-                verticalArrangement = Arrangement.Top,
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = "10^c",
+                    textAlign = TextAlign.Center,
+                    fontSize = 80.sp,
+                    color = Color.White,
+                    modifier = Modifier.padding(vertical = 40.dp)
+                )
+            }
+            Box(
+                contentAlignment = Alignment.Center,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-
-                    Text(
-                        text = "10^c",
-                        textAlign = TextAlign.Center,
-                        fontSize = 80.sp,
-                        color = Color.White,
-                        modifier = Modifier.padding(vertical = 40.dp)
-                    )
-
-                }
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        text = "today's date",
-                        color = Color.White
-                    )
-                }
+                Text(
+                    text = "today's date",
+                    color = Color.White
+                )
             }
         }
     }
