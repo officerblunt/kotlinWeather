@@ -1,4 +1,4 @@
-package ru.officerblunt.composeapp
+package ru.officerblunt.composeapp.homescreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*

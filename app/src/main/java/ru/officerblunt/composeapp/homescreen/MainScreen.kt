@@ -1,4 +1,4 @@
-package ru.officerblunt.composeapp
+package ru.officerblunt.composeapp.homescreen
 
 import androidx.compose.material.DrawerValue
 import androidx.compose.material.Scaffold
