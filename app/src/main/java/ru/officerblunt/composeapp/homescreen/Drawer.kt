@@ -13,35 +13,35 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-    @Composable
-    fun Drawer() {
-        val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
-        val coroutineScope = rememberCoroutineScope()
-        Column(
-            Modifier
-                .background(Color.White)
-                .fillMaxSize()
+@Composable
+fun Drawer() {
+    val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
+    val coroutineScope = rememberCoroutineScope()
+    Column(
+        Modifier
+            .background(Color.White)
+            .fillMaxSize()
+    ) {
+        Text(
+            "Weather app",
+            modifier = Modifier.padding(top = 32.dp, start = 20.dp),
+            fontSize = 23.sp
+        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 40.dp, start = 22.dp)
         ) {
-            Text(
-                "Weather app",
-                modifier = Modifier.padding(top = 32.dp, start = 20.dp),
-                fontSize = 23.sp
+            Icon(
+                Icons.Rounded.Settings,
+                contentDescription = "settings",
+                modifier = Modifier.size(20.dp)
             )
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 40.dp, start = 22.dp)
-            ) {
-                Icon(
-                    Icons.Rounded.Settings,
-                    contentDescription = "settings",
-                    modifier = Modifier.size(20.dp)
-                )
-                Text(
-                    "Настройки",
-                    fontSize = 18.sp,
-                    textAlign = TextAlign.Justify
-                )
-            }
+            Text(
+                "Настройки",
+                fontSize = 18.sp,
+                textAlign = TextAlign.Justify
+            )
         }
     }
+}
